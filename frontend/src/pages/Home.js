@@ -24,7 +24,7 @@ export default function Home({ onEditPost, showToast }) {
       if (search) params.search = search;
       if (selectedTag) params.tag = selectedTag;
       const res = await postsAPI.getAll(params);
-      setPosts(res.data.posts);
+      setPosts(res.data.posts || []);
       setTotalPages(res.data.pages);
     } catch {
       showToast('Failed to load posts', 'error');
